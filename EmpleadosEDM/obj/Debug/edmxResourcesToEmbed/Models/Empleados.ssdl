@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpleadosEDMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Empleado_Detalles">
+    <Key>
+      <PropertyRef Name="Detalles_ID" />
+    </Key>
+    <Property Name="Detalles_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Empleado_ID" Type="int" />
+    <Property Name="Categoria" Type="varchar" MaxLength="50" />
+    <Property Name="ANTIGUEDAD_Pluses" Type="int" />
+    <Property Name="Experiencia_Anios" Type="int" />
+    <Property Name="Salario" Type="int" />
+    <Property Name="Subcategoria" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Empleado_Experiencia_Estadisticas">
+    <Key>
+      <PropertyRef Name="Edad_ID" />
+    </Key>
+    <Property Name="Edad_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Empleado_ID" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Anios" Type="int" />
+    <Property Name="Bajas_Laborales" Type="int" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="ANTIGUEDAD" Type="int" />
+    <Property Name="Edad" Type="int" />
+  </EntityType>
+  <EntityType Name="Empleados_Antiguedad_Estadisticas">
+    <Key>
+      <PropertyRef Name="ANTIGUEDAD_ID" />
+    </Key>
+    <Property Name="ANTIGUEDAD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Empleado_ID" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Extra" Type="int" />
+    <Property Name="Bajas_Laborales" Type="int" />
+  </EntityType>
+  <Association Name="FK__Empleado___Emple__286302EC">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+    <End Role="Empleado_Experiencia_Estadisticas" Type="Self.Empleado_Experiencia_Estadisticas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Empleado_Experiencia_Estadisticas">
+        <PropertyRef Name="Empleado_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleado___Emple__2B3F6F97">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+    <End Role="Empleado_Detalles" Type="Self.Empleado_Detalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Empleado_Detalles">
+        <PropertyRef Name="Empleado_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleados__Emple__25869641">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+    <End Role="Empleados_Antiguedad_Estadisticas" Type="Self.Empleados_Antiguedad_Estadisticas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Empleados_Antiguedad_Estadisticas">
+        <PropertyRef Name="Empleado_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpleadosEDMModelStoreContainer">
+    <EntitySet Name="Empleado_Detalles" EntityType="Self.Empleado_Detalles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado_Experiencia_Estadisticas" EntityType="Self.Empleado_Experiencia_Estadisticas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados_Antiguedad_Estadisticas" EntityType="Self.Empleados_Antiguedad_Estadisticas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Empleado___Emple__286302EC" Association="Self.FK__Empleado___Emple__286302EC">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Empleado_Experiencia_Estadisticas" EntitySet="Empleado_Experiencia_Estadisticas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleado___Emple__2B3F6F97" Association="Self.FK__Empleado___Emple__2B3F6F97">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Empleado_Detalles" EntitySet="Empleado_Detalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleados__Emple__25869641" Association="Self.FK__Empleados__Emple__25869641">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Empleados_Antiguedad_Estadisticas" EntitySet="Empleados_Antiguedad_Estadisticas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

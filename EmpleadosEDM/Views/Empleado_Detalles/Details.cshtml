@@ -1,0 +1,58 @@
+﻿@model EmpleadosEDM.Models.Empleado_Detalles
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleado_Detalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTIGUEDAD_Pluses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTIGUEDAD_Pluses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experiencia_Anios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experiencia_Anios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Detalles_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

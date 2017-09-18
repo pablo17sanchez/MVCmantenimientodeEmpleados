@@ -1,0 +1,69 @@
+﻿@model EmpleadosEDM.Models.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTIGUEDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTIGUEDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>Categoria</th>
+            <th>Subcategoria </th>
+            <th>Años de Experiencia </th>
+            <th>Salario</th>
+        </tr>
+
+        @foreach (var item in Model.Empleado_Detalles)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Subcategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Experiencia_Anios)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Salario)
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

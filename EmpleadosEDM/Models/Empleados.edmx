@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmpleadosEDMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Empleado_Detalles">
+          <Key>
+            <PropertyRef Name="Detalles_ID" />
+          </Key>
+          <Property Name="Detalles_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empleado_ID" Type="int" />
+          <Property Name="Categoria" Type="varchar" MaxLength="50" />
+          <Property Name="ANTIGUEDAD_Pluses" Type="int" />
+          <Property Name="Experiencia_Anios" Type="int" />
+          <Property Name="Salario" Type="int" />
+          <Property Name="Subcategoria" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Empleado_Experiencia_Estadisticas">
+          <Key>
+            <PropertyRef Name="Edad_ID" />
+          </Key>
+          <Property Name="Edad_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empleado_ID" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Anios" Type="int" />
+          <Property Name="Bajas_Laborales" Type="int" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="ANTIGUEDAD" Type="int" />
+          <Property Name="Edad" Type="int" />
+        </EntityType>
+        <EntityType Name="Empleados_Antiguedad_Estadisticas">
+          <Key>
+            <PropertyRef Name="ANTIGUEDAD_ID" />
+          </Key>
+          <Property Name="ANTIGUEDAD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empleado_ID" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Extra" Type="int" />
+          <Property Name="Bajas_Laborales" Type="int" />
+        </EntityType>
+        <Association Name="FK__Empleado___Emple__286302EC">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Empleado_Experiencia_Estadisticas" Type="Self.Empleado_Experiencia_Estadisticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleado_Experiencia_Estadisticas">
+              <PropertyRef Name="Empleado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado___Emple__2B3F6F97">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Empleado_Detalles" Type="Self.Empleado_Detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleado_Detalles">
+              <PropertyRef Name="Empleado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Emple__25869641">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Empleados_Antiguedad_Estadisticas" Type="Self.Empleados_Antiguedad_Estadisticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleados_Antiguedad_Estadisticas">
+              <PropertyRef Name="Empleado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpleadosEDMModelStoreContainer">
+          <EntitySet Name="Empleado_Detalles" EntityType="Self.Empleado_Detalles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado_Experiencia_Estadisticas" EntityType="Self.Empleado_Experiencia_Estadisticas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados_Antiguedad_Estadisticas" EntityType="Self.Empleados_Antiguedad_Estadisticas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Empleado___Emple__286302EC" Association="Self.FK__Empleado___Emple__286302EC">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleado_Experiencia_Estadisticas" EntitySet="Empleado_Experiencia_Estadisticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado___Emple__2B3F6F97" Association="Self.FK__Empleado___Emple__2B3F6F97">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleado_Detalles" EntitySet="Empleado_Detalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Emple__25869641" Association="Self.FK__Empleados__Emple__25869641">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleados_Antiguedad_Estadisticas" EntitySet="Empleados_Antiguedad_Estadisticas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmpleadosEDMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empleado_Detalles">
+          <Key>
+            <PropertyRef Name="Detalles_ID" />
+          </Key>
+          <Property Name="Detalles_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empleado_ID" Type="Int32" />
+          <Property Name="Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ANTIGUEDAD_Pluses" Type="Int32" />
+          <Property Name="Experiencia_Anios" Type="Int32" />
+          <Property Name="Salario" Type="Int32" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado___Emple__2B3F6F97" FromRole="Empleado_Detalles" ToRole="Empleados" />
+          <Property Name="Subcategoria" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Empleado_Experiencia_Estadisticas">
+          <Key>
+            <PropertyRef Name="Edad_ID" />
+          </Key>
+          <Property Name="Edad_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empleado_ID" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Anios" Type="Int32" />
+          <Property Name="Bajas_Laborales" Type="Int32" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado___Emple__286302EC" FromRole="Empleado_Experiencia_Estadisticas" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ANTIGUEDAD" Type="Int32" />
+          <Property Name="Edad" Type="Int32" />
+          <NavigationProperty Name="Empleado_Detalles" Relationship="Self.FK__Empleado___Emple__2B3F6F97" FromRole="Empleados" ToRole="Empleado_Detalles" />
+          <NavigationProperty Name="Empleado_Experiencia_Estadisticas" Relationship="Self.FK__Empleado___Emple__286302EC" FromRole="Empleados" ToRole="Empleado_Experiencia_Estadisticas" />
+          <NavigationProperty Name="Empleados_Antiguedad_Estadisticas" Relationship="Self.FK__Empleados__Emple__25869641" FromRole="Empleados" ToRole="Empleados_Antiguedad_Estadisticas" />
+        </EntityType>
+        <EntityType Name="Empleados_Antiguedad_Estadisticas">
+          <Key>
+            <PropertyRef Name="ANTIGUEDAD_ID" />
+          </Key>
+          <Property Name="ANTIGUEDAD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empleado_ID" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extra" Type="Int32" />
+          <Property Name="Bajas_Laborales" Type="Int32" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleados__Emple__25869641" FromRole="Empleados_Antiguedad_Estadisticas" ToRole="Empleados" />
+        </EntityType>
+        <Association Name="FK__Empleado___Emple__2B3F6F97">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Empleado_Detalles" Type="Self.Empleado_Detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleado_Detalles">
+              <PropertyRef Name="Empleado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado___Emple__286302EC">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Empleado_Experiencia_Estadisticas" Type="Self.Empleado_Experiencia_Estadisticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleado_Experiencia_Estadisticas">
+              <PropertyRef Name="Empleado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Emple__25869641">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Empleados_Antiguedad_Estadisticas" Type="Self.Empleados_Antiguedad_Estadisticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleados_Antiguedad_Estadisticas">
+              <PropertyRef Name="Empleado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpleadosEDMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empleado_Detalles" EntityType="Self.Empleado_Detalles" />
+          <EntitySet Name="Empleado_Experiencia_Estadisticas" EntityType="Self.Empleado_Experiencia_Estadisticas" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+          <EntitySet Name="Empleados_Antiguedad_Estadisticas" EntityType="Self.Empleados_Antiguedad_Estadisticas" />
+          <AssociationSet Name="FK__Empleado___Emple__2B3F6F97" Association="Self.FK__Empleado___Emple__2B3F6F97">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleado_Detalles" EntitySet="Empleado_Detalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado___Emple__286302EC" Association="Self.FK__Empleado___Emple__286302EC">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleado_Experiencia_Estadisticas" EntitySet="Empleado_Experiencia_Estadisticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Emple__25869641" Association="Self.FK__Empleados__Emple__25869641">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleados_Antiguedad_Estadisticas" EntitySet="Empleados_Antiguedad_Estadisticas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmpleadosEDMModelStoreContainer" CdmEntityContainer="EmpleadosEDMEntities">
+          <EntitySetMapping Name="Empleado_Detalles">
+            <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleado_Detalles">
+              <MappingFragment StoreEntitySet="Empleado_Detalles">
+                <ScalarProperty Name="Subcategoria" ColumnName="Subcategoria" />
+                <ScalarProperty Name="Detalles_ID" ColumnName="Detalles_ID" />
+                <ScalarProperty Name="Empleado_ID" ColumnName="Empleado_ID" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="ANTIGUEDAD_Pluses" ColumnName="ANTIGUEDAD_Pluses" />
+                <ScalarProperty Name="Experiencia_Anios" ColumnName="Experiencia_Anios" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado_Experiencia_Estadisticas">
+            <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleado_Experiencia_Estadisticas">
+              <MappingFragment StoreEntitySet="Empleado_Experiencia_Estadisticas">
+                <ScalarProperty Name="Edad_ID" ColumnName="Edad_ID" />
+                <ScalarProperty Name="Empleado_ID" ColumnName="Empleado_ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Anios" ColumnName="Anios" />
+                <ScalarProperty Name="Bajas_Laborales" ColumnName="Bajas_Laborales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ANTIGUEDAD" ColumnName="ANTIGUEDAD" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados_Antiguedad_Estadisticas">
+            <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleados_Antiguedad_Estadisticas">
+              <MappingFragment StoreEntitySet="Empleados_Antiguedad_Estadisticas">
+                <ScalarProperty Name="ANTIGUEDAD_ID" ColumnName="ANTIGUEDAD_ID" />
+                <ScalarProperty Name="Empleado_ID" ColumnName="Empleado_ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="Bajas_Laborales" ColumnName="Bajas_Laborales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

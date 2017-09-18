@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmpleadosEDMModelStoreContainer" CdmEntityContainer="EmpleadosEDMEntities">
+    <EntitySetMapping Name="Empleado_Detalles">
+      <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleado_Detalles">
+        <MappingFragment StoreEntitySet="Empleado_Detalles">
+          <ScalarProperty Name="Subcategoria" ColumnName="Subcategoria" />
+          <ScalarProperty Name="Detalles_ID" ColumnName="Detalles_ID" />
+          <ScalarProperty Name="Empleado_ID" ColumnName="Empleado_ID" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="ANTIGUEDAD_Pluses" ColumnName="ANTIGUEDAD_Pluses" />
+          <ScalarProperty Name="Experiencia_Anios" ColumnName="Experiencia_Anios" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado_Experiencia_Estadisticas">
+      <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleado_Experiencia_Estadisticas">
+        <MappingFragment StoreEntitySet="Empleado_Experiencia_Estadisticas">
+          <ScalarProperty Name="Edad_ID" ColumnName="Edad_ID" />
+          <ScalarProperty Name="Empleado_ID" ColumnName="Empleado_ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Anios" ColumnName="Anios" />
+          <ScalarProperty Name="Bajas_Laborales" ColumnName="Bajas_Laborales" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ANTIGUEDAD" ColumnName="ANTIGUEDAD" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados_Antiguedad_Estadisticas">
+      <EntityTypeMapping TypeName="EmpleadosEDMModel.Empleados_Antiguedad_Estadisticas">
+        <MappingFragment StoreEntitySet="Empleados_Antiguedad_Estadisticas">
+          <ScalarProperty Name="ANTIGUEDAD_ID" ColumnName="ANTIGUEDAD_ID" />
+          <ScalarProperty Name="Empleado_ID" ColumnName="Empleado_ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Extra" ColumnName="Extra" />
+          <ScalarProperty Name="Bajas_Laborales" ColumnName="Bajas_Laborales" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
